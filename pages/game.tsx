@@ -378,6 +378,7 @@ const Home: NextPage<{ id: string; time: number; test?: boolean }> = (
   }, [store.status]);
 
   const { data: usedItems } = useUsed();
+
   useEffect(() => {
     if (
       store.scene === "intro" &&
