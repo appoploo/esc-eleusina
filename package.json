@@ -13,7 +13,6 @@
     "@react-spring/web": "^9.4.3",
     "@react-three/drei": "^8.10.0",
     "@react-three/fiber": "^7.0.26",
-    "@types/bcrypt": "^5.0.0",
     "@use-gesture/react": "^10.2.6",
     "axios": "^0.26.0",
     "bcrypt": "^5.0.1",
@@ -40,6 +39,7 @@
   },
   "devDependencies": {
     "@octokit/core": "^3.5.1",
+    "@types/bcrypt": "^5.0.0",
     "@types/earcut": "^2.1.1",
     "@types/formidable": "^2.0.4",
     "@types/mapbox-gl": "^2.6.3",
