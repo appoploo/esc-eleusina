@@ -11,7 +11,7 @@ import MiniGameWrapper from "../MiniGameWrapper";
 
 export function Clock() {
   const { data: miniGames = [] } = useMiniGames();
-  const miniGame = miniGames?.find((e) => e.scene === store.scene);
+  const miniGame = miniGames?.find((e) => ["arxaiologikos"].includes(e.scene));
   const { locale } = useRouter();
   const clock = (miniGame?.[locale === "en" ? "enClock" : "clock"]?.split(
     ","
