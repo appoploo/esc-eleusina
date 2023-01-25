@@ -41,10 +41,16 @@ type Key =
   | "learn_more"
   | "clock_pp5_title"
   | "clock_pp5_text"
-  | "clock_pp5_author";
+  | "clock_pp5_author"
+  | "error"
+  | "password_does_not_match"
+  | "username_already_exists";
 
 const translations: Record<Locale, Record<Key, string>> = {
   en: {
+    password_does_not_match: `Passwords does not match`,
+    username_already_exists: `Username already exists`,
+    error: "Username or password is incorrect",
     menu_play: "Play",
     menu_select_level: "Select Level",
     menu_achievements: "Achievements",
@@ -190,6 +196,9 @@ nl που, τότε, κλείστηκε απάνω μου,
 nl εμπόδιο φανερό στο φως τ’ ουρανού.
 `,
     clock_pp5_author: `Περσεφόνη, Ζωή Καρέλλη, 1973`,
+    error: `Το Ονομα χρήστη ή κωδικός πρόσβασης είναι εσφαλμένος`,
+    password_does_not_match: `Οι κωδικοί πρέπει να είναι ίδιοι`,
+    username_already_exists: `Το όνομα χρήστη υπάρχει ήδη`,
   },
 };
 

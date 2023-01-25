@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useT } from "../Hooks/useT";
 
 export default function Login() {
   const router = useRouter();
   const { locale } = router;
   const t = useT();
+  const [error, setError] = useState<
+    "password_does_not_match" | "username_already_exists" | null
+  >(null);
 
   return (
     <div className="bg-black w-screen h-screen">
@@ -37,6 +41,26 @@ export default function Login() {
           </option>
         </select>
         <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const res = await fetch(form.action, {
+              method: form.method,
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            const d = await res.json();
+            if (res.status > 299) {
+              setError(d.msg);
+            } else {
+              router.push("/?newUser=true");
+            }
+          }}
           method="post"
           action="/api/auth?type=register"
           className="max-w-xl  w-full grid gap-y-8  bg-black bg-opacity-80 border border-white border-opacity-30 p-8 rounded"
@@ -76,6 +100,9 @@ export default function Login() {
             type="submit"
             className="input hover:bg-white hover:scale-95 hover:bg-opacity-5 placeholder-yellow-800  input-bordered bg-black bg-opacity-70  w-full bordered text-yellow-500  outline-none focus:outline-none text-2xl  "
           />
+          {error && (
+            <div className="text-red-500 text-center text-sm">{t(error)}</div>
+          )}
 
           <Link href="/login">
             <a
