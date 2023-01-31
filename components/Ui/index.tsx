@@ -158,7 +158,7 @@ export default function Ui(props: { items: Item[]; time: number }) {
         className={clsx(
           "fixed w-full max-w-xl  right-0  mr-4   pointer-events-auto",
           {
-            hidden: store.status !== "RUNNING",
+            hidden: store.status !== "RUNNING" || doIHaveAchievement,
           }
         )}
       >

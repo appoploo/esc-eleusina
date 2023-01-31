@@ -543,6 +543,9 @@ const Home: NextPage<{ id: string; time: number; test?: boolean }> = (
       {store.sound && !store.mute && (
         <audio ref={ref} src={`/sounds/${store.sound}.mp3`} />
       )}
+      {!store.mute && (
+        <audio autoPlay loop src={`/sounds/${store.scene}.mp3`}></audio>
+      )}
     </div>
   );
 };
