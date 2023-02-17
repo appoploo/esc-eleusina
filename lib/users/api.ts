@@ -40,7 +40,7 @@ export async function createUser(req: NextApiRequest, res: NextApiResponse) {
     id: id.insertedId.toString(),
   };
   await req.session.save();
-  return res.writeHead(302, { Location: "/?newUser=true" }).end();
+  return res.json({});
 }
 
 let loginSchema = yup.object().shape({
