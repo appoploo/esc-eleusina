@@ -284,7 +284,7 @@ export function WordSearch() {
   const t = useT();
   return (
     <MiniGameWrapper status="WORDSEARCH">
-      <div className="grid grid-cols-[1fr_0.4fr] p-10 h-full">
+      <div className="grid  h-full grid-cols-[1fr_0.4fr] ">
         <div
           onMouseLeave={() => {
             if (drag) {
@@ -292,7 +292,7 @@ export function WordSearch() {
               setDrag(false);
             }
           }}
-          className="grid grid-cols-12 "
+          className="grid grid-cols-12 border  "
         >
           {www?.map((word) =>
             word.map((letter, idx) => (
@@ -300,7 +300,7 @@ export function WordSearch() {
                 key={letter.id}
                 {...bind(letter)}
                 className={clsx(
-                  "border items-center justify-center text-2xl font-bold w-full h-full flex",
+                  "border  items-center justify-center text-2xl font-bold w-full h-full flex",
                   {
                     "bg-green-700 bg-opacity-50":
                       selected.map((e) => e.id).includes(letter.id) ||
@@ -316,9 +316,9 @@ export function WordSearch() {
             ))
           )}
         </div>
-        <div className="h-full  flex">
+        <div className="h-full p-4 flex">
           <div className="divider-horizontal divider h-full"></div>
-          <div className="w-full h-full p-4">
+          <div className="w-full h-full ">
             <p className="text-md font-bold">
               {t(
                 store.scene === "pp4_navagio"

@@ -10,8 +10,13 @@ import { useStore } from "../../store";
 import MiniGameWrapper from "../MiniGameWrapper";
 
 export function Clock() {
+  const store = useStore();
+
   const { data: miniGames = [] } = useMiniGames();
-  const miniGame = miniGames?.find((e) => ["arxaiologikos"].includes(e.scene));
+  const miniGame = miniGames?.find(
+    (e) => e.scene === store.scene && e.type === "clock"
+  );
+
   const { locale } = useRouter();
   const clock = (miniGame?.[locale === "en" ? "enClock" : "clock"]?.split(
     ","
@@ -30,7 +35,6 @@ export function Clock() {
   const [found, setFound] = useState<string[]>([]);
 
   const [selected, setSelected] = useState<string[]>([]);
-  const store = useStore();
   const [drag, setDrag] = useState(false);
 
   const uniqCh = Array.from(new Set(allCh));
