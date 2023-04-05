@@ -63,6 +63,7 @@ export default function Ui(props: { items: Item[]; time: number }) {
   useEffect(() => {
     if (miniGameBnt) store.setSound(`04_are_you_ready`);
   }, [miniGameBnt]);
+
   useEffect(() => {
     if (
       currMinigames?.type === "collect" &&
@@ -70,15 +71,15 @@ export default function Ui(props: { items: Item[]; time: number }) {
       currMinigames.reward
     ) {
       store.setReward(currMinigames?.reward);
-      // if (currMinigames?.reward?.superDuper) {
-      //   setTimeout(async () => {
-      //     if (store.scene === "pp5_navagio_int") {
-      //       await updateUser({ scene: "final" });
-      //       store.setReward(null);
-      //       store.setScene("final");
-      //     }
-      //   }, 3000);
-      // }
+      if (currMinigames?.reward?.superDuper) {
+        setTimeout(async () => {
+          if (store.scene === "pp6_mixanostasio" && currMinigames?.reward) {
+            await updateUser({ scene: "final" });
+            store.setReward(null);
+            store.setScene("final");
+          }
+        }, 3000);
+      }
     }
   }, [inventory, store.scene, currMinigames]);
 

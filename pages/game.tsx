@@ -405,7 +405,7 @@ const Home: NextPage<{ id: string; time: number; test?: boolean }> = (
       giveReward();
     }
 
-    if (store.scene === "final" && usedItems.length === 1) {
+    if (store.scene === "final" && usedItems.length === 3) {
       router.push("/congrats");
     }
   }, [store.scene, usedItems, locale, achievements]);
