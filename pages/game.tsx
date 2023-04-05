@@ -150,6 +150,9 @@ function Portal(props: Item) {
 
     ref.current.scale.set(props.scale / 2, props.scale / 3, 1);
   });
+  const { data: achievements, isLoading } = useAchievements();
+
+  const achIds = achievements.map((e) => e.rewardId);
 
   const ref = useRef<Mesh>();
   useEffect(() => {
@@ -157,7 +160,8 @@ function Portal(props: Item) {
     ref.current.position.copy(props.position);
     ref.current.rotation.copy(props.rotation);
   }, [props.position, ref.current]);
-  const invHas = (id?: string) => inventory.map((e) => e._id).includes(id);
+  const invHas = (id?: string) =>
+    [...achIds, ...inventory.map((e) => e._id)].includes(id);
   const { data: inventory } = useInventory();
   const store = useStore();
   const show = props?.requiredItems

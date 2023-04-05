@@ -70,15 +70,15 @@ export default function Ui(props: { items: Item[]; time: number }) {
       currMinigames.reward
     ) {
       store.setReward(currMinigames?.reward);
-      if (currMinigames?.reward?.superDuper) {
-        setTimeout(async () => {
-          if (store.scene === "pp5_navagio_int") {
-            await updateUser({ scene: "final" });
-            store.setReward(null);
-            store.setScene("final");
-          }
-        }, 3000);
-      }
+      // if (currMinigames?.reward?.superDuper) {
+      //   setTimeout(async () => {
+      //     if (store.scene === "pp5_navagio_int") {
+      //       await updateUser({ scene: "final" });
+      //       store.setReward(null);
+      //       store.setScene("final");
+      //     }
+      //   }, 3000);
+      // }
     }
   }, [inventory, store.scene, currMinigames]);
 

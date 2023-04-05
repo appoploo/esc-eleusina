@@ -35,8 +35,11 @@ export default function Reward() {
         <div className="px-20 bg-opacity-80 bg-black border  py-10 rounded-2xl">
           <h1 className=" text-lg text-yellow-400">{t("reward_title")}</h1>
           <div className="divider"></div>
-          <div className="bg-gray-300 bg-opacity-10 w-full h-full p-8 flex justify-center my-auto">
-            <img className="w-fit object-scale-down " src={store.reward?.src} />
+          <div className="bg-gray-300 bg-opacity-10 w-full h-[50vh] p-8 flex justify-center my-auto">
+            <img
+              className="w-fit h-full object-scale-down "
+              src={store.reward?.src}
+            />
           </div>
           <div className="mt-4 text-xl" style={shadow}>
             {store.reward?.[locale === "en" ? "enDescription" : "description"]}
