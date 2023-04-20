@@ -87,7 +87,7 @@ Will you manage to escape and become an Initiate or will you be trapped forever?
     ready_easy: `Easy`,
     ready_hard: `Hard`,
     ready_continue: `Continue`,
-    ready_title: `Scenario`,
+    ready_title: `Escape through culture - Elefsina`,
     ui_inventory: `Inventory`,
     ui_time: `Time Remaining`,
     ui_play_the_game: `Play the game`,
