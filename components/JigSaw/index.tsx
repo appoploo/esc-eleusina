@@ -175,6 +175,8 @@ export default function JigSaw() {
             _addReward(store.reward);
             store.setReward(store.reward);
           }
+        } else {
+          store.setStatus("RUNNING");
         }
       }}
       status="JIGSAW"

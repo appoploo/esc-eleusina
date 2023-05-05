@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import useMutation from "../../Hooks/useMutation";
 import { useT } from "../../Hooks/useT";
 import { addItem, addReward, useInventory } from "../../lib/inventory";
-import { useItems } from "../../lib/items";
+import { useItems, useMiniGames } from "../../lib/items";
 import { Reward } from "../../pages/game";
 import { Scene, useStore } from "../../store";
 import MiniGameWrapper from "../MiniGameWrapper";
@@ -150,33 +150,32 @@ CROOKEDTEETH,
   },
   pp4_navagio: {
     el_words: [`ΕΝΑΣΤΡΗ ΝΥΧΤΑ`, `ΠΡΟΠΟΔΕΣ`, `ΑΣΤΕΡΙΑ`, `ΧΑΡΑ`, `ΑΔΗΣ`],
-    el_structure: `
-	............,
-	ΕΝΑΣΤΡΗΝΥΧΤΑ,
-	............,
-	.Π.ΑΔΗΣ.....,
-	.Ρ..........,
-	.Ο..........,
-	.Π.......Χ..,
-	.Ο.ΑΣΤΕΡΙΑ..,
-	.Δ.......Ρ..,
-	.Ε.......Α..,
-	.Σ..........,
-	............,`,
+    el_structure: `............,
+    ΕΝΑΣΤΡΗΝΥΧΤΑ,
+    ............,
+    .Π.ΑΔΗΣ.....,
+    .Ρ..........,
+    .Ο..........,
+    .Π.......Χ..,
+    .Ο.ΑΣΤΕΡΙΑ..,
+    .Δ.......Ρ..,
+    .Ε.......Α..,
+    .Σ..........,
+    ............,`,
     en_words: [`STARRY NIGHT`, `FOOTHILLS`, `STARS`, `JOY`, `HADES`],
     en_structure: `
-	............,
-  .STARRYNIGHT,
-	............,
-	.F..HADES...,
-	.O..........,
-	.O..........,
-	.T....JOY...,
-	.H..........,
-	.I...STARS..,
-	.L..........,
-	.L..........,
-	.S..........`,
+    ............,
+    .STARRYNIGHT,
+    ............,
+    .F..HADES...,
+    .O..........,
+    .O..........,
+    .T....JOY...,
+    .H..........,
+    .I...STARS..,
+    .L..........,
+    .L..........,
+    .S..........`,
   },
 };
 
@@ -215,6 +214,7 @@ export function WordSearch() {
   }, [store.status]);
 
   const { data: items } = useItems();
+  const { data: miniGames } = useMiniGames();
   const { data: inventory } = useInventory();
   const invHas = (id?: string) => inventory.map((e) => e._id).includes(id);
   useEffect(() => {
@@ -235,19 +235,24 @@ export function WordSearch() {
     `/api/items?scene=${store.scene}`,
   ]);
 
+  const currMiniGame = miniGames.find((e) => e.scene === store.scene);
+
   const solve = () => {
-    if (!giveItem) return;
-    if (store.scene === "pp4_navagio") _addReward(giveItem as Reward);
-    else {
+    if (store.scene === "pp4_navagio") {
+      if (!currMiniGame?.reward) return;
+      _addReward(currMiniGame.reward as Reward);
+      store.setReward(currMiniGame?.reward);
+    } else {
+      if (!giveItem) return;
       _addItem(giveItem._id);
+      store.setReward({
+        _id: "sss",
+        name: giveItem.name,
+        src: giveItem.src,
+        description: "Κέρδισες έναν καθρέφτη.",
+        enDescription: "Υου have won a mirror.",
+      });
     }
-    store.setReward({
-      _id: "sss",
-      name: giveItem.name,
-      src: giveItem.src,
-      description: "Κέρδισες έναν καθρέφτη.",
-      enDescription: "Υου have won a mirror.",
-    });
   };
 
   const bind = useGesture({
