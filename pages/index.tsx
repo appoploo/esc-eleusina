@@ -16,6 +16,7 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="h-screen w-screen grid grid-cols-5 gap-2 bg-black ">
+      <img className="fixed right-4 z-50 bottom-4 w-80" src="/espa-logo.jpg" />
       {arr.map((e, idx) => (
         <Link
           key={idx}
@@ -63,5 +64,5 @@ export const getServerSideProps: GetServerSideProps = withSessionSsr(
       return {
         props: { ...user },
       };
-  }
+  },
 );

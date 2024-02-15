@@ -17,6 +17,8 @@ export default function Login() {
         className="z-0 absolute w-screen h-screen object-contain"
         alt=""
       />
+      <img className="fixed right-4 bottom-4 w-80" src="/espa-logo.jpg" />
+
       <section className="h-screen z-50 absolute flex items-center  justify-center  w-screen overflow-hidden">
         <select
           value={locale}
