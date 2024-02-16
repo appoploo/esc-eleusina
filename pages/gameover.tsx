@@ -10,6 +10,7 @@ export default function GameOver() {
   }, []);
   return (
     <main className="h-screen w-full flex flex-col justify-center items-center bg-black">
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       <h1 className="text-6xl font-extrabold text-white tracking-widest">
         Ο χρόνος σας έληξε
       </h1>

@@ -21,6 +21,7 @@ export default function Menu() {
   });
   return (
     <div className="flex justify-center items-center w-screen h-screen bg-black bg-opacity-50">
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       <audio ref={ref} src={`/sounds/${store.sound ?? `01_click`}.wav`} />
 
       <div className="grid container  gap-y-3 w-full p-5">

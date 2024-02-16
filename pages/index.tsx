@@ -18,6 +18,7 @@ export default function Home() {
   const [user, setUser] = useState(router.query.newUser);
   return (
     <div className="h-screen w-screen grid grid-cols-5 gap-2 bg-black ">
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       {arr.map((e, idx) => (
         <Link key={idx} href={user ? "/learn-more?newUser=true" : "/ready"}>
           <button

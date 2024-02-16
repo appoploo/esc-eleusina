@@ -316,6 +316,7 @@ const Menu: NextPage = () => {
     <div className="flex justify-center items-center w-screen h-screen bg-black bg-opacity-50">
       <audio ref={ref} src={`/sounds/${store.sound ?? `01_click`}.wav`} />
 
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       <div className="grid container  gap-y-3 w-full p-5">
         <img
           className="w-28 mx-auto h-28 mb-12 "

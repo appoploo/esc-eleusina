@@ -18,6 +18,7 @@ export default function GameOver(props: User) {
       }}
       className="h-screen bg-auto bg-no-repeat bg-center  w-full flex flex-col justify-center  items-center bg-black"
     >
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       <div className="max-w-4xl text-center mx-auto  bg-black bg-opacity-50 p-8">
         <h1 className="text-6xl font-extrabold text-white">
           {t("congrats")} {props.userName}!

@@ -20,6 +20,7 @@ export default function Home() {
 
   return (
     <div className="relative">
+      <img className="fixed right-4 bottom-4 z-50 w-80" src="/espa-logo.jpg" />
       <video
         ref={videoEl}
         autoPlay
